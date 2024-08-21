@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+.bg-img {
+  background-image: url("../src/assets/bg-img5.png")
+}
+
+.bar {
+  display: block;
+  width: 35px;
+  height: 2px;
+  background: #eaeaea;
+  margin: 6px 17px;
+  transition: all 0.3s ease-in-out;
+  transform-origin: left;
+}
+
+.menu-open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, -6px);
+  width: 25px;
+}
+
+.menu-open .bar:nth-child(2) {
+  transform: translateX(21px);
+  opacity: 0;
+}
+
+.menu-open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, 6px);
+  width: 25px;
+}
+
+.menu-close .bar {
+  transform: rotate(0deg) translate(0px, 0px);
+  opacity: 1;
+}
+
+.link-underline {
+  @apply relative inline-block text-sm text-white; 
+}
+
+.link-underline::after {
+  content: '';
+  @apply absolute left-0 bottom-0 w-full h-[2px] bg-purple-400 transition-transform duration-700; /* Warna dan transisi */
+  transform: scaleX(0);
+  transform-origin: bottom left;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
