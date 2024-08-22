@@ -30,7 +30,7 @@ const Navbar = () => {
             <nav className="fixed left-0 right-0 top-2 z-50">
                 {/* Desktop Menu */}
                 <div className="w-full hidden items-center -mt-5 justify-center rounded-lg py-3 backdrop-blur-lg lg:flex">
-                    <div className="flex items-center justify-between w-full gap-4 p-8">
+                    <div className="flex items-center justify-around w-full gap-4 p-7">
                         <div>
                             <a href="#">
                                 <img src={logo} width={150} alt="logo" />
@@ -53,7 +53,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 {/* Mobile Menu */}
-                <div className="rounded-lg backdrop-blur-md lg:hidden">
+                <div className="rounded-lg backdrop-blur-sm lg:hidden font-mono -m-1.5 p-1">
                     <div className="flex items-center justify-between">
                         <div>
                             <a href="#">
@@ -68,11 +68,12 @@ const Navbar = () => {
                                 <div className="bar"></div>
                                 <div className="bar"></div>
                                 <div className="bar"></div>
+                                <div className="bar"></div>
                             </button>
                         </div>
                     </div>
                     {isMobileMenuOpen && (
-                        <ul className="ml-4 mt-10 flex flex-col gap-4 backdrop-blur-md">
+                        <ul className="ml-4 mt-10 flex flex-col gap-4 backdrop-blur-md font-sans">
                             {NAVIGATION_LINKS.map((item, index) => (
                                 <li key={index}>
                                     <a href={item.href} className="block w-full text-xl font-medium p-1" onClick={(e) => handleLinkClick(e, item.href)}>
@@ -85,10 +86,15 @@ const Navbar = () => {
                 </div>
             </nav>
 
+
             {/* Fullscreen Blur Background */}
             <div
-                className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-lg transition-opacity duration-300 z-40 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} lg:hidden`}
+                className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-lg 
+                transition-opacity duration-500 ease-in-out z-40 
+                ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} 
+                lg:hidden`}
             ></div>
+
         </div>
     )
 }
