@@ -4,10 +4,19 @@ import { NAVIGATION_LINKS } from "../constants";
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [menuAnimation, setMenuAnimation] = useState("");
 
     const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
-    }
+        if (isMobileMenuOpen) {
+            setMenuAnimation("fade-out-left");
+            setTimeout(() => {
+                setIsMobileMenuOpen(false);
+            }, 300);
+        } else {
+            setIsMobileMenuOpen(true);
+            setMenuAnimation("fade-in-right");
+        }
+    };
 
     const handleLinkClick = (e, href) => {
         e.preventDefault();
@@ -22,8 +31,11 @@ const Navbar = () => {
                 behavior: "smooth",
             });
         }
-        setIsMobileMenuOpen(false);
-    }
+        setMenuAnimation("fade-out-left");
+        setTimeout(() => {
+            setIsMobileMenuOpen(false);
+        }, 300);
+    };
 
     const handleLogoClick = (e) => {
         e.preventDefault();
@@ -31,8 +43,11 @@ const Navbar = () => {
             top: 0,
             behavior: "smooth",
         });
-        setIsMobileMenuOpen(false);
-    }
+        setMenuAnimation("fade-out-left");
+        setTimeout(() => {
+            setIsMobileMenuOpen(false);
+        }, 300);
+    };
 
     useEffect(() => {
         if (isMobileMenuOpen) {
@@ -46,8 +61,8 @@ const Navbar = () => {
         <div>
             <nav className="fixed left-0 right-0 top-2 z-50">
                 {/* Desktop Menu */}
-                <div className="w-full mx-auto hidden max-w-3xl items-center py-3 mt-1 justify-center rounded-lg border border-stone-500 bg-black/90 backdrop-blur-lg lg:flex">
-                    <div className="flex items-center justify-beetween w-full gap-6">
+                <div className="w-full mx-auto hidden max-w-[47rem] items-center py-3 mt-1 justify-center rounded-lg border border-stone-500 bg-black/90 backdrop-blur-lg lg:flex">
+                    <div className="flex items-center justify-center w-full gap-6">
                         <div>
                             <a href="#" onClick={handleLogoClick}>
                                 <img src={logo} width={150} alt="logo" className="image" />
@@ -57,7 +72,8 @@ const Navbar = () => {
                             <ul className="flex items-center font-medium gap-6">
                                 {NAVIGATION_LINKS.map((item, index) => (
                                     <li key={index}>
-                                        <a className="link-underline"
+                                        <a
+                                            className="link-underline"
                                             href={item.href}
                                             onClick={(e) => handleLinkClick(e, item.href)}
                                         >
@@ -70,7 +86,10 @@ const Navbar = () => {
                     </div>
                 </div>
                 {/* Mobile Menu */}
-                <div className="rounded-lg backdrop-blur-none lg:hidden font-mono -m-2.5 p-3">
+                <div
+                    className={`rounded-lg backdrop-blur-none lg:hidden font-mono -m-2.5 p-3 ${isMobileMenuOpen ? "mobile-menu" : ""
+                        }`}
+                >
                     <div className="flex items-center justify-between">
                         <div>
                             <a href="#" onClick={handleLogoClick}>
@@ -79,7 +98,8 @@ const Navbar = () => {
                         </div>
                         <div className="flex items-center">
                             <button
-                                className={`focus:outline-none lg:hidden ${isMobileMenuOpen ? 'menu-open' : 'menu-close'}`}
+                                className={`focus:outline-none lg:hidden ${isMobileMenuOpen ? "menu-open" : "menu-close"
+                                    }`}
                                 onClick={toggleMobileMenu}
                             >
                                 <div className="bar"></div>
@@ -90,10 +110,19 @@ const Navbar = () => {
                         </div>
                     </div>
                     {isMobileMenuOpen && (
-                        <ul className="ml-4 mt-10 flex flex-col gap-4 backdrop-blur-sm font-sans">
+                        <ul
+                            className={`ml-4 mt-10 flex flex-col gap-4 backdrop-blur-sm font-sans transition-all duration-300 ease-in-out ${menuAnimation}`}
+                        >
                             {NAVIGATION_LINKS.map((item, index) => (
-                                <li key={index}>
-                                    <a href={item.href} className="block w-full text-xl font-medium p-1" onClick={(e) => handleLinkClick(e, item.href)}>
+                                <li
+                                    key={index}
+                                    className="transition-transform duration-300 ease-in-out transform"
+                                >
+                                    <a
+                                        href={item.href}
+                                        className="block w-full text-2xl font-medium p-1 link-underline-res"
+                                        onClick={(e) => handleLinkClick(e, item.href)}
+                                    >
                                         {item.label}
                                     </a>
                                 </li>
@@ -104,13 +133,11 @@ const Navbar = () => {
             </nav>
             {/* Fullscreen Blur Background */}
             <div
-                className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-lg 
-                transition-opacity duration-500 ease-in-out z-40 
-                ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} 
-                lg:hidden`}
+                className={`fullscreen-overlay ${isMobileMenuOpen ? "overlay-visible" : "overlay-hidden"
+                    }`}
             ></div>
         </div>
-    )
-}
+    );
+};
 
 export default Navbar;

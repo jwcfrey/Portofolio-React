@@ -22,7 +22,6 @@ const Typewriter = ({ text, speed = 650, delay = 6000, minLength = 1 }) => {
                     }, delay);
                 }
             } else {
-                // Deleting effect
                 setDisplayedText(prevText => {
                     const updatedText = prevText.slice(0, -1);
                     if (updatedText.length <= minLength) {

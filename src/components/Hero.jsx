@@ -5,14 +5,14 @@ import Typewriter from '../hooks/Typewriter';
 const Hero = () => {
     return (
         <section className="flex min-h-screen flex-wrap items-center">
-            <div className="w-full md:w-1/2">
-                <h2 className="my-10 p-2 text-4xl font-bold md:text-5xl lg:text-[7rem]">
+            <div className="w-full md:w-1/2 text-justify p-9">
+            <h2 className="mt-10 mb-4 p-0 text-2xl font-bold sm:text-5xl md:text-4xl lg:text-[3.1rem] xl:text-[4.2rem] title__text">
                     <Typewriter text={[HERO.name]} />
                 </h2>
-                <p className="p-2 text-3xl tracking-normal lg:text-3xl">
+                <p className="p-2 text-3xl tracking-normal lg:text-3xl align__text">
                     {HERO.greet}
                 </p>
-                <p className="mb-8 p-2 text-xl text-justify">
+                <p className="mb-8 p-2 mt-3 text-xl align__text">
                     {HERO.description}
                 </p>
             </div>

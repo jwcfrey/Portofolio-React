@@ -7,12 +7,12 @@ import {
   FaInstagram,
 } from "react-icons/fa6";
 
-import projectImage1 from "../assets/project1.jpeg";
-import projectImage2 from "../assets/project2.jpeg";
-import projectImage3 from "../assets/project3.jpeg";
-import projectImage4 from "../assets/project4.jpeg";
-import projectImage5 from "../assets/project5.jpeg";
-import projectImage6 from "../assets/project6.jpeg";
+import projectImage1 from "../assets/mioo.jpg";
+import projectImage2 from "../assets/mioo.jpg";
+import projectImage3 from "../assets/mioo.jpg";
+import projectImage4 from "../assets/mioo.jpg";
+import projectImage5 from "../assets/mioo.jpg";
+import projectImage6 from "../assets/mioo.jpg";
 
 import { RiReactjsLine } from "react-icons/ri";
 import { TbBrandNextjs } from "react-icons/tb";
