@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { NAVIGATION_LINKS } from "../constants";
 
@@ -25,15 +25,32 @@ const Navbar = () => {
         setIsMobileMenuOpen(false);
     }
 
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        setIsMobileMenuOpen(false);
+    }
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
+        }
+    }, [isMobileMenuOpen]);
+
     return (
         <div>
             <nav className="fixed left-0 right-0 top-2 z-50">
                 {/* Desktop Menu */}
-                <div className="w-full hidden items-center -mt-5 justify-center rounded-lg py-3 backdrop-blur-lg lg:flex">
-                    <div className="flex items-center justify-around w-full gap-4 p-7">
+                <div className="w-full mx-auto hidden max-w-3xl items-center py-3 mt-1 justify-center rounded-lg border border-stone-500 bg-black/90 backdrop-blur-lg lg:flex">
+                    <div className="flex items-center justify-beetween w-full gap-6">
                         <div>
-                            <a href="#">
-                                <img src={logo} width={150} alt="logo" />
+                            <a href="#" onClick={handleLogoClick}>
+                                <img src={logo} width={150} alt="logo" className="image" />
                             </a>
                         </div>
                         <div>
@@ -53,10 +70,10 @@ const Navbar = () => {
                     </div>
                 </div>
                 {/* Mobile Menu */}
-                <div className="rounded-lg backdrop-blur-sm lg:hidden font-mono -m-1.5 p-1">
+                <div className="rounded-lg backdrop-blur-none lg:hidden font-mono -m-2.5 p-3">
                     <div className="flex items-center justify-between">
                         <div>
-                            <a href="#">
+                            <a href="#" onClick={handleLogoClick}>
                                 <img src={logo} alt="logo" width={90} className="m-2" />
                             </a>
                         </div>
@@ -73,7 +90,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     {isMobileMenuOpen && (
-                        <ul className="ml-4 mt-10 flex flex-col gap-4 backdrop-blur-md font-sans">
+                        <ul className="ml-4 mt-10 flex flex-col gap-4 backdrop-blur-sm font-sans">
                             {NAVIGATION_LINKS.map((item, index) => (
                                 <li key={index}>
                                     <a href={item.href} className="block w-full text-xl font-medium p-1" onClick={(e) => handleLinkClick(e, item.href)}>
@@ -85,8 +102,6 @@ const Navbar = () => {
                     )}
                 </div>
             </nav>
-
-
             {/* Fullscreen Blur Background */}
             <div
                 className={`fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-lg 
@@ -94,7 +109,6 @@ const Navbar = () => {
                 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} 
                 lg:hidden`}
             ></div>
-
         </div>
     )
 }
