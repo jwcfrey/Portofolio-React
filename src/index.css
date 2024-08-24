@@ -66,6 +66,10 @@ body {
   color: #fff;
 }
 
+a, button {
+  cursor: default;
+}
+
 .bg-img {
   background-image: url("../src/assets/bg-img5.png")
 }
@@ -191,6 +195,10 @@ nav {
 }
 
 @media (max-width: 1024px) {
+  .li__effect:hover {
+    color: #8c4df7;
+  }
+
   .align__text {
     text-align: center;
   }
@@ -240,7 +248,7 @@ nav {
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     height: 2px;
     background-color: #8c4df7;
     transition: transform 0.5s ease;

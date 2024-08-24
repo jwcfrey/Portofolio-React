@@ -1,6 +1,11 @@
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Projects from './components/Projects'
+import Bio from './components/Bio'
+import Skills from './components/Skills'
+import WorkExperience from './components/WorkExperience'
+import EducationSection from './components/EducationSection'
+import ContactForm from './components/ContactForm'
 
 const App = () => {
   return (
@@ -10,6 +15,11 @@ const App = () => {
         <Hero />
         <Navbar />
         <Projects />
+        <Bio />
+        <Skills />
+        <WorkExperience />
+        <EducationSection />
+        <ContactForm />
       </div>
     </div>
   )

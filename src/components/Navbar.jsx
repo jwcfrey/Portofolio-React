@@ -120,7 +120,7 @@ const Navbar = () => {
                                 >
                                     <a
                                         href={item.href}
-                                        className="block w-full text-2xl font-medium p-1 link-underline-res"
+                                        className="block w-full text-2xl -ml-4 font-medium py-4 px-4 li__effect link-underline-res"
                                         onClick={(e) => handleLinkClick(e, item.href)}
                                     >
                                         {item.label}
