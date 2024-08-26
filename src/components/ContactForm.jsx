@@ -48,10 +48,10 @@ const ContactForm = () => {
 
         emailjs
             .send(
-                "service_bpunobh", // Your EmailJS service ID
-                "template_w6uu9p7", // Your EmailJS template ID
-                formData, // The form data (name, email, message)
-                "DpRNOXin9vpPIjuYE" // Your EmailJS public key
+                "service_bpunobh",
+                "template_w6uu9p7",
+                formData,
+                "DpRNOXin9vpPIjuYE"
             )
             .then(() => {
                 toast.success("Message sent successfully");
@@ -69,7 +69,7 @@ const ContactForm = () => {
     return (
         <div className="p-4 lg:w-3/4" id="contact">
             <Toaster />
-            <h2 className="my-8 text-center text-4xl font-semibold tracking-tighter">
+            <h2 className="my-8 text-center text-4xl font-extrabold tracking-tighter">
                 Let's Connect
             </h2>
             <form onSubmit={handleSubmit}>
@@ -82,10 +82,10 @@ const ContactForm = () => {
                             value={formData.name}
                             placeholder="Name"
                             onChange={handleChange}
-                            className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
+                            className="mb-4 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-purple-500 focus:text-white hover:text-white focus:outline-none button__contact"
                         />
                         {errors.name && (
-                            <p className="text-sm text-rose-800">{errors.name}</p>
+                            <p className="text-sm text-red-400">{errors.name}</p>
                         )}
                     </div>
                     <div className="lg:w-1/2">
@@ -96,10 +96,10 @@ const ContactForm = () => {
                             value={formData.email}
                             placeholder="Email"
                             onChange={handleChange}
-                            className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
+                            className="mb-4 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-purple-500 focus:text-white hover:text-white focus:outline-none button__contact"
                         />
                         {errors.email && (
-                            <p className="text-sm text-rose-800">{errors.email}</p>
+                            <p className="text-sm text-red-400">{errors.email}</p>
                         )}
                     </div>
                 </div>
@@ -110,21 +110,20 @@ const ContactForm = () => {
                         value={formData.message}
                         placeholder="Message"
                         onChange={handleChange}
-                        className="mb-8 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-stone-400 focus:outline-none"
+                        className="mb-4 w-full appearance-none rounded-lg border border-stone-50/30 bg-transparent px-3 py-2 text-sm focus:border-purple-500 focus:text-white hover:text-white focus:outline-none button__contact"
                         rows="5"
                     />
                     {errors.message && (
-                        <p className="text-sm text-rose-800">{errors.message}</p>
+                        <p className="text-sm text-red-400">{errors.message}</p>
                     )}
                 </div>
                 <button
                     type="submit"
-                    className={`mb-8 w-full rounded border border-stone-50/30 bg-stone-200 px-4 py-2 text-sm font-semibold text-stone-900 hover:bg-stone-300 ${
-                        isSending ? "cursor-not-allowed opacity-50" : ""
-                    }`}
+                    className={`group relative mb-8 w-full rounded border border-stone-50/30 hover:border-[#8c4df7] focus:border-[#8c4df7] bg-transparent px-4 py-2 text-sm font-semibold overflow-hidden transition-all duration-500 ${isSending ? "cursor-not-allowed opacity-50" : ""}`}
                     disabled={isSending}
                 >
-                    <div className="flex items-center justify-center gap-2">
+                    <span className="absolute inset-0 bg-[#8c4df7] focus:border-[#8c4df7] bg-span transform -translate-x-full"></span>
+                    <div className="relative flex items-center justify-center gap-2 z-10 transition-colors duration-500 text-div font-semibold">
                         {isSending ? "Sending..." : "Send"}
                         <FiSend />
                     </div>
@@ -134,4 +133,4 @@ const ContactForm = () => {
     );
 };
 
-export default ContactForm;
+export default ContactForm

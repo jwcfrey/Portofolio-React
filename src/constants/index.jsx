@@ -28,27 +28,27 @@ function getGreeting() {
   const minutes = now.getMinutes();
 
   const morningGreetings = [
-    "Good morning, rise and shine ! 👋🏻",
-    "Wishing you a bright morning ! 👋🏻",
-    "Top of the morning to you ! 👋🏻",
+    "Good morning, rise and shine !",
+    "Wishing you a bright morning !",
+    "Top of the morning to you !",
   ];
 
   const afternoonGreetings = [
-    "Good afternoon, keep up the great work ! 👋🏻",
-    "Hope your afternoon is going well ! 👋🏻",
-    "A wonderful afternoon to you ! 👋🏻",
+    "Good afternoon, keep up the great work !",
+    "Hope your afternoon is going well !",
+    "A wonderful afternoon to you !",
   ];
 
   const eveningGreetings = [
-    "Good evening, enjoy the night ahead ! 👋🏻",
-    "Relax, it’s evening time ! 👋🏻",
-    "Evening vibes, unwind and relax ! 👋🏻",
+    "Good evening, enjoy the night ahead !",
+    "Relax, it’s evening time !",
+    "Evening vibes, unwind and relax !",
   ];
 
   const nightGreetings = [
-    "Good night, sleep tight ! 👋🏻",
-    "Wishing you a peaceful night ! 👋🏻",
-    "Sweet dreams and good night ! 👋🏻",
+    "Good night, sleep tight !",
+    "Wishing you a peaceful night !",
+    "Sweet dreams and good night !",
   ];
 
   if (hours >= 5 && (hours < 12 || (hours === 12 && minutes === 0))) {
@@ -72,10 +72,11 @@ export const NAVIGATION_LINKS = [
 ];
 
 export const HERO = {
-  name: "Mio akiyama",
+  introduce: "Hey, I'm",
+  name:"Mio akiyama",
   greet: getGreeting(),
   description:
-    "I am a passionate frontend developer with a knack for creating beautiful and functional user interfaces. I like transforming ideas into engaging web experiences for over a decade.",
+    "I've spent the last 5 years building and scaling software for some pretty cool companies. I also teach people to paint online (incase you've got an empty canvas layin' around 🎨). Let's connect!",
 };
 
 export const PROJECTS = [
@@ -212,26 +213,26 @@ export const EDUCATION = [
 export const SOCIAL_MEDIA_LINKS = [
   {
     href: "https://x.com/",
-    icon: <FaFacebook fontSize={25} className="hover:opacity-80" />,
+    icon: <FaFacebook fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
   {
     href: "https://x.com/",
-    icon: <FaDiscord fontSize={25} className="hover:opacity-80" />,
+    icon: <FaDiscord fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
   {
     href: "https://x.com/",
-    icon: <FaInstagram fontSize={25} className="hover:opacity-80" />,
+    icon: <FaInstagram fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
   {
     href: "https://x.com/",
-    icon: <FaXTwitter fontSize={25} className="hover:opacity-80" />,
+    icon: <FaXTwitter fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
   {
     href: "https://github.com/",
-    icon: <FaGithub fontSize={25} className="hover:opacity-80" />,
+    icon: <FaGithub fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
   {
     href: "https://www.linkedin.com/",
-    icon: <FaLinkedin fontSize={25} className="hover:opacity-80" />,
+    icon: <FaLinkedin fontSize={25} className="text-white hover:text-indigo-500 transition-colors duration-300" />,
   },
 ];

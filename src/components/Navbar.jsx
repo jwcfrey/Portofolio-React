@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { NAVIGATION_LINKS } from "../constants";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -61,7 +63,7 @@ const Navbar = () => {
         <div>
             <nav className="fixed left-0 right-0 top-2 z-50">
                 {/* Desktop Menu */}
-                <div className="w-full mx-auto hidden max-w-[47rem] items-center py-3 mt-1 justify-center rounded-lg border border-stone-500 bg-black/90 backdrop-blur-lg lg:flex">
+                <div className="w-full mx-auto hidden max-w-[43rem] items-center py-3 mt-1 justify-center rounded-lg border border-stone-800 bg-[#101011] backdrop-blur-lg lg:flex">
                     <div className="flex items-center justify-center w-full gap-6">
                         <div>
                             <a href="#" onClick={handleLogoClick}>
@@ -70,10 +72,12 @@ const Navbar = () => {
                         </div>
                         <div>
                             <ul className="flex items-center font-medium gap-6">
-                                {NAVIGATION_LINKS.map((item, index) => (
+                                {NAVIGATION_LINKS.filter((item) =>
+                                    ["PROJECTS", "BIO", "SKILLS", "WORK EXPERIENCES", "EDUCATION"].includes(item.label)
+                                ).map((item, index) => (
                                     <li key={index}>
                                         <a
-                                            className="link-underline"
+                                            className="link-underline hover:bg-[#8c4df7] hover:text-[#101011] hover:ease-out hover:duration-300"
                                             href={item.href}
                                             onClick={(e) => handleLinkClick(e, item.href)}
                                         >
@@ -120,7 +124,7 @@ const Navbar = () => {
                                 >
                                     <a
                                         href={item.href}
-                                        className="block w-full text-2xl -ml-4 font-medium py-4 px-4 li__effect link-underline-res"
+                                        className="block w-full text-2xl -ml-4 font-medium p-2 li__effect link-underline-res"
                                         onClick={(e) => handleLinkClick(e, item.href)}
                                     >
                                         {item.label}

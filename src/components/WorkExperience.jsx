@@ -2,11 +2,11 @@ import { EXPERIENCES } from "../constants"
 
 const WorkExperience = () => {
     return (
-        <section className="pt-20" id="work">
-            <h2 className="text-center text-4xl font-semibold tracking-tighter">
+        <section className="py-10 container mx-auto space-y-8 p-0 text-justify justify-center" id="work">
+            <h2 className="text-center text-4xl font-extrabold tracking-tighter">
                 Work Experience
             </h2>
-            <div className="space-y-8 p-10 text-justify justify-center">
+            <div className="space-y-8 p-2 work__experience justify-center">
                 {EXPERIENCES.map((
                     experience, index
                 ) => (

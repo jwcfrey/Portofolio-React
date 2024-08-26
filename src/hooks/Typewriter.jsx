@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const Typewriter = ({ text, speed = 650, delay = 6000, minLength = 1 }) => {
-    const [displayedText, setDisplayedText] = useState([]);
-    const [isFading, setIsFading] = useState(false);
+const Typewriter = ({ text, speed = 100, delay = 2000, minLength = 1 }) => {
+    const [displayedText, setDisplayedText] = useState(text[0] || ''); // Start with the full text displayed
+    const [isDeleting, setIsDeleting] = useState(true); // Start with deleting
     const [loopNum, setLoopNum] = useState(0);
     const [cursor, setCursor] = useState('|');
 
@@ -11,37 +11,37 @@ const Typewriter = ({ text, speed = 650, delay = 6000, minLength = 1 }) => {
         const fullText = text[currentIndex] || '';
 
         const handleTyping = () => {
-            if (!isFading) {
-                // Typing effect
-                const updatedText = fullText.substring(0, displayedText.length + 1).split('');
-                setDisplayedText(updatedText);
-
-                if (updatedText.length === fullText.length) {
-                    setTimeout(() => {
-                        setIsFading(true);
-                    }, delay);
+            if (isDeleting) {
+                // Deleting text character by character
+                if (displayedText.length > minLength) {
+                    setDisplayedText(fullText.substring(0, displayedText.length - 1));
+                } else {
+                    // Finished deleting to minLength, start typing again
+                    setIsDeleting(false);
                 }
             } else {
-                setDisplayedText(prevText => {
-                    const updatedText = prevText.slice(0, -1);
-                    if (updatedText.length <= minLength) {
-                        setIsFading(false);
-                        setLoopNum(loopNum + 1);
-                    }
-                    return updatedText;
-                });
+                // Typing out the text character by character
+                if (displayedText.length < fullText.length) {
+                    setDisplayedText(fullText.substring(0, displayedText.length + 1));
+                } else {
+                    // Once the full text is displayed, start deleting after delay
+                    setTimeout(() => {
+                        setIsDeleting(true);
+                        setLoopNum(loopNum + 1); // Move to the next text
+                    }, delay);
+                }
             }
         };
 
-        const typingSpeed = isFading ? speed / 1 : speed;
+        const typingSpeed = isDeleting ? speed / 2 : speed; // Faster speed when deleting
         const typingTimeout = setTimeout(handleTyping, typingSpeed);
 
         return () => clearTimeout(typingTimeout);
-    }, [displayedText, isFading, loopNum, text, speed, delay, minLength]);
+    }, [displayedText, isDeleting, loopNum, text, speed, delay, minLength]);
 
     useEffect(() => {
         const cursorInterval = setInterval(() => {
-            setCursor(prevCursor => (prevCursor === '|' ? '' : '|'));
+            setCursor((prevCursor) => (prevCursor === '|' ? '' : '|'));
         }, 600);
 
         return () => clearInterval(cursorInterval);
@@ -49,11 +49,7 @@ const Typewriter = ({ text, speed = 650, delay = 6000, minLength = 1 }) => {
 
     return (
         <span>
-            {displayedText.map((char, index) => (
-                <span key={index}>
-                    {char}
-                </span>
-            ))}
+            {displayedText}
             {cursor}
         </span>
     );

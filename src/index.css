@@ -30,11 +30,11 @@
 @keyframes waveMove {
   0% {
     transform: translateX(-100%);
-    background: rgb(36, 41, 38, 1);
+    background: #8c4df7;
   }
   25% {
     transform: translateX(100%);
-    background: rgb(36, 41, 38, 1);
+    background: #8c4df7;
   }
   50% {
     transform: translateX(100%);
@@ -42,7 +42,7 @@
   }
   75% {
     transform: translateX(100%);
-    background: rgb(36, 41, 38, 1);
+    background: #8c4df7;
   }
   100% {
     transform: translateX(100%);
@@ -50,14 +50,53 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+@keyframes sendIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
+
+@keyframes sendOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+@keyframes wave {
+  0% {
+    background-position: 0%;
+  }
+  45%, 50%, 55% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+
+/* index.css */
 
 html, body {
   height: 100%;
   margin: 0;
   scrollbar-width: auto;
+}
+
+::selection {
+  background-color: #8c4df7;
+  color: #101011;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -66,12 +105,12 @@ body {
   color: #fff;
 }
 
-a, button {
+a, button, li, textarea, input {
   cursor: default;
 }
 
 .bg-img {
-  background-image: url("../src/assets/bg-img5.png")
+  background-color: #101011;
 }
 
 .image {
@@ -108,6 +147,32 @@ nav {
   margin: 5px 18px;
   transition: all 0.3s ease-in-out;
   transform-origin: left;
+}
+
+.line__footer__left {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, #fff, #101011, #101011);
+  margin: -1rem 6.1rem;
+  transform: rotate(145deg);
+  transition: all 0.3s ease-in-out;
+  transform-origin: left;
+  background-size: 200%;
+  animation: wave 2s infinite linear;
+}
+
+.line__footer__right {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, #fff, #101011, #101011);
+  margin: -1rem 6.1rem;
+  transform: rotate(35deg);
+  transition: all 0.3s ease-in-out;
+  transform-origin: left;
+  background-size: 200%;
+  animation: wave 2s infinite linear;
 }
 
 .menu-open .bar:nth-child(1) {
@@ -159,15 +224,15 @@ nav {
 }
 
 .menu-close .bar:nth-child(2)::before {
-  animation-delay: 2.31s;
+  animation-delay: 2.35s;
 }
 
 .menu-close .bar:nth-child(3)::before {
-  animation-delay: 2.42s;
+  animation-delay: 2.5s;
 }
 
 .menu-close .bar:nth-child(4)::before {
-  animation-delay: 2.53s;
+  animation-delay: 2.65s;
 }
 
 .link-underline {
@@ -194,7 +259,51 @@ nav {
   transform: scaleX(1);
 }
 
+.button__contact {
+  transition: border-color 0.3s ease;
+}
+
+.button__contact:hover {
+  border-color: #8c4df7;
+  color: #8c4df7;
+}
+
+.group:hover .bg-span {
+  animation: sendIn 1s forwards;
+}
+
+.group:hover .text-div {
+  color: #101011;
+  opacity: 1;
+  transition: 1s forwards;
+}
+
+.group:not(:hover) .bg-span {
+  animation: sendOut 1s forwards;
+}
+
+.group:not(:hover) .text-div {
+  color: white;
+  opacity: 0.6;
+  transition: 1s forwards;
+}
+
+.bio {
+  text-align: justify;
+  flex-direction: column;
+}
+
+.work__experience {
+  text-align: justify;
+  flex-direction: column;
+}
+
 @media (max-width: 1024px) {
+  .li__effect {
+    letter-spacing: .05rem;
+    
+  }
+
   .li__effect:hover {
     color: #8c4df7;
   }
@@ -247,7 +356,7 @@ nav {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: .5rem;
     width: 100vw;
     height: 2px;
     background-color: #8c4df7;
@@ -259,11 +368,31 @@ nav {
   .link-underline-res:hover::after {
     transform: scaleX(1);
   }
+  
+  .title__name {
+    font-size: 3rem;
+    letter-spacing: .2px;
+  }
+
+  .button__hero {
+    padding-left: 5.3rem;
+  }
 }
 
 @media (max-width: 768px) {
   .title__text {
     text-align: center;
+  }
+  
+  .title__name {
+    padding-bottom: -.7rem;
+    font-size: 3rem;
+    text-align: center;
+    letter-spacing: .2px;
+  }
+
+  .button__hero {
+    padding-left: 12.9rem;
   }
 }
 
@@ -272,6 +401,34 @@ nav {
     font-size: 2.5rem;
     text-align: center;
     letter-spacing: .2px;
+    padding: .7rem;
+  }
+
+  .title__name {
+    padding-top: 1.5rem;
+    font-size: 2.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: .2px;
+  }
+
+  .button__hero {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    padding-left: 0;
+  }
+
+  .bio {
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .work__experience {
+    text-align: left;
+    flex-direction: column;
   }
 }
 
@@ -279,5 +436,23 @@ nav {
   .title__text {
     font-size: 2.1rem;
     text-align: center;
+    flex-direction: row;
+  }
+
+  .title__name {
+    padding-top: 1.5rem;
+    font-size: 2.2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: .2px;
+  }
+
+  .button__hero {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
+    padding-left: 0;
   }
 }
