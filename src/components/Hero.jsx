@@ -6,16 +6,16 @@ const Hero = () => {
     return (
         <section className="flex min-h-screen flex-wrap items-center">
             <div className="w-full md:w-1/2 p-9">
-                <h1 className="mt-19 mb-4 pl-2 text-2xl font-extrabold sm:text-5xl md:text-5xl lg:text-[3.1rem] xl:text-[5.2rem] title__text">
+                <h1 className="mt-19 mb-4 pl-2 text-2xl font-extrabold sm:text-5xl md:text-5xl lg:text-[3.1rem] xl:text-[4.9rem] title__text">
                     {HERO.introduce}
-                    <div className="text-[#8c4df7] pt-2 title__name">
+                    <div className="text-[#8c4df7] pt-2 title__name xl:text-[6rem]">
                         {HERO.name}
                     </div>
                 </h1>
                 <p className="p-2 font-semibold text-3xl tracking-normal lg:text-3xl align__text">
                     <Typewriter text={[HERO.greet]} />
                 </p>
-                <p className="mb-8 p-1 mt-3 pl-2 text-xl font-thin text-justify align__text">
+                <p className="mb-8 p-1 mt-3 pl-2 text-xl font-thin align__text">
                     {HERO.description}
                 </p>
                 <button className="relative pl-1 button__hero justify-center">

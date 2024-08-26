@@ -309,7 +309,7 @@ nav {
   }
 
   .align__text {
-    text-align: center;
+    text-align: left;
   }
 
   .no-scroll {
@@ -373,52 +373,44 @@ nav {
     font-size: 3rem;
     letter-spacing: .2px;
   }
-
-  .button__hero {
-    padding-left: 5.3rem;
-  }
 }
 
 @media (max-width: 768px) {
   .title__text {
-    text-align: center;
+    text-align: left;
+    font-size: 2.2rem;
   }
   
   .title__name {
     padding-bottom: -.7rem;
-    font-size: 3rem;
-    text-align: center;
+    font-size: 2.6rem;
+    text-align: left;
     letter-spacing: .2px;
   }
 
-  .button__hero {
-    padding-left: 12.9rem;
+  .align__text {
+    padding-top: -2.5rem;
+    text-align: left;
   }
 }
 
 @media (max-width: 640px) {
   .title__text {
-    font-size: 2.5rem;
-    text-align: center;
+    font-size: 2.1rem;
+    text-align: left;
     letter-spacing: .2px;
     padding: .7rem;
   }
 
   .title__name {
-    padding-top: 1.5rem;
+    padding-top: 1.2rem;
     font-size: 2.5rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: .2px;
+    text-align: left;
   }
 
-  .button__hero {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(-30%);
-    padding-left: 0;
+  .align__text {
+    padding-top: -2.5rem;
+    text-align: left;
   }
 
   .bio {
@@ -435,24 +427,29 @@ nav {
 @media (max-width: 321px) {
   .title__text {
     font-size: 2.1rem;
-    text-align: center;
+    text-align: left;
     flex-direction: row;
   }
 
   .title__name {
     padding-top: 1.5rem;
-    font-size: 2.2rem;
-    text-align: center;
+    font-size: 2rem;
+    text-align: left;
     display: flex;
     justify-content: center;
     align-items: center;
     letter-spacing: .2px;
   }
 
+  .align__text {
+    text-align: left;
+  }
+
   .button__hero {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%) translateY(-30%);
+    left: 18vw; /* Misalnya, 20vw mengatur posisi pada 20% dari lebar viewport */
+    transform: translateX(-50%); /* Center elemen di tengah-tengah `left: 20vw` */
+    transform: translateY(-30%);
     padding-left: 0;
   }
 }
